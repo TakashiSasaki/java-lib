@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class JsonTest {
+public class GsonTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -31,11 +31,11 @@ public class JsonTest {
 	@Test
 	public void test() {
 		int[] data = { 314, 159, 265 };
-		JsonSerializer<int[]> json_serializer = new JsonSerializer<int[]>(data);
+		GsonSerializer<int[]> json_serializer = new GsonSerializer<int[]>(data);
 		String json_string = json_serializer.get();
 		assertEquals("[314,159,265]", json_string);
 		System.out.println(json_string);
-		JsonDeserializer<int[]> json_deserializer = new JsonDeserializer<int[]>(
+		GsonDeserializer<int[]> json_deserializer = new GsonDeserializer<int[]>(
 				json_string);
 		assertEquals(json_deserializer.getClassT().getCanonicalName(), "int[]");
 		assertEquals(json_deserializer.getClassT(), int[].class);

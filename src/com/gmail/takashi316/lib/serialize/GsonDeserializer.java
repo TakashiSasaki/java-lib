@@ -10,11 +10,11 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 
-public class JsonDeserializer<T> {
+public class GsonDeserializer<T> {
 	private T deserializedObject;
 
 	@SuppressWarnings("unchecked")
-	public JsonDeserializer(String json_string) {
+	public GsonDeserializer(String json_string) {
 		GsonBuilder gson_builder = new GsonBuilder();
 		Gson gson = gson_builder.create();
 		Class<?> t = this.getClassT();
