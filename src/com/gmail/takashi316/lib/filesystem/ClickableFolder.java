@@ -1,6 +1,8 @@
 package com.gmail.takashi316.lib.filesystem;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 
 public class ClickableFolder {
 	public static final int ID_UNDEFINED = 0;
@@ -35,31 +37,36 @@ public class ClickableFolder {
 		this.idSequence[parent_sequence.length] = number;
 	}// the constructor
 
-	/**
-	 * @return the name
-	 */
+	public HashMap<String, Object> get() throws IOException {
+		HashMap<String, Object> hash_map = new HashMap<String, Object>();
+		hash_map.put("name", this.name);
+		hash_map.put("number", this.number);
+		hash_map.put("rawName", this.rawName);
+		hash_map.put("x", this.x);
+		hash_map.put("y", this.y);
+		for (int i = 0; i < this.idSequence.length; ++i) {
+			hash_map.put("level" + (i + 1), this.idSequence[i]);
+		}// for
+		return hash_map;
+	}// get
+
+	@SuppressWarnings("javadoc")
 	public String getName() {
 		return this.name;
-	}
+	}// getName
 
-	/**
-	 * @return the number
-	 */
+	@SuppressWarnings("javadoc")
 	public int getNumber() {
 		return this.number;
-	}
+	}// getNumber
 
-	/**
-	 * @return the x
-	 */
+	@SuppressWarnings("javadoc")
 	public int getX() {
 		return this.x;
-	}
+	}// getX
 
-	/**
-	 * @return the y
-	 */
+	@SuppressWarnings("javadoc")
 	public int getY() {
 		return this.y;
-	}
+	}// getY
 }// ClickableFolder
