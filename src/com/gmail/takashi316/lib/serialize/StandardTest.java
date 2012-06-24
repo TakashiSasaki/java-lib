@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class DeserializerTest {
+public class StandardTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -32,7 +32,7 @@ public class DeserializerTest {
 		int[] data = { 191, 23, 9, 5 };
 		byte[] byte_array;
 		try {
-			Serializer serializer = new Serializer(data);
+			StandardSerializer serializer = new StandardSerializer(data);
 			byte_array = serializer.get();
 			System.out.println(byte_array.length);
 		} catch (IOException e) {
@@ -44,7 +44,7 @@ public class DeserializerTest {
 
 		int[] deserialized_data;
 		try {
-			Deserializer<int[]> deserializer = new Deserializer<int[]>(
+			StandardDeserializer<int[]> deserializer = new StandardDeserializer<int[]>(
 					byte_array);
 			deserialized_data = deserializer.get();
 		} catch (ClassNotFoundException e) {

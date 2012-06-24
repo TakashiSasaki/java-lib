@@ -4,10 +4,10 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-public class Deserializer<T> {
+public class StandardDeserializer<T> {
 	private T object;
 
-	public Deserializer(byte[] byte_array) throws IOException,
+	public StandardDeserializer(byte[] byte_array) throws IOException,
 			ClassNotFoundException {
 		ByteArrayInputStream bais = new ByteArrayInputStream(
 				byte_array);

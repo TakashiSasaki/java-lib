@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Serializer {
+public class StandardSerializer {
 	private byte[] byteArray;
 
-	public Serializer(Serializable serializable_) throws IOException {
+	public StandardSerializer(Serializable serializable_) throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ObjectOutputStream oos = new ObjectOutputStream(baos);
 		oos.writeObject(serializable_);
