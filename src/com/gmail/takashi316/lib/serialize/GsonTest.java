@@ -37,13 +37,15 @@ public class GsonTest {
 		System.out.println(json_string);
 		GsonDeserializer<int[]> json_deserializer = new GsonDeserializer<int[]>(
 				json_string);
-		assertEquals(json_deserializer.getClassT().getCanonicalName(), "int[]");
-		assertEquals(json_deserializer.getClassT(), int[].class);
-		ArrayList<Double> deserialized_data = (ArrayList<Double>) (Object) json_deserializer
-				.get();
+		assertEquals(json_deserializer.getClassT1().getCanonicalName(), "int[]");
+		assertEquals(json_deserializer.getClassT1(), int[].class);
+		assertEquals(json_deserializer.getClassT2().getCanonicalName(), "int[]");
+		assertEquals(json_deserializer.getClassT2(), int[].class);
+		assertEquals(json_deserializer.getClassT1(), json_deserializer.getClassT2());
+		int[] deserialized_data = json_deserializer.get();
 
 		for (int i = 0; i < data.length; ++i) {
-			assertEquals(new Double(data[i]), deserialized_data.get(i));
+			assertEquals(data[i], deserialized_data[i]);
 		}// for
 	}// test
 }// JsonTest
