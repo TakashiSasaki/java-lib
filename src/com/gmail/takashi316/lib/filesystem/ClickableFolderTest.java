@@ -94,10 +94,10 @@ public class ClickableFolderTest {
 	 */
 	@Test
 	public final void testGetName() {
-		assertEquals(this.clickableFolder_023_jkl.getName(), "jkl");
-		assertEquals(this.clickableFolder_1_def.getName(), "def");
-		assertEquals(this.clickableFolder_1_ghi_100_200.getName(), "ghi");
-		assertEquals(this.clickableFolder_abc.getName(), "abc");
+		assertEquals(this.clickableFolder_023_jkl.getTitle(), "jkl");
+		assertEquals(this.clickableFolder_1_def.getTitle(), "def");
+		assertEquals(this.clickableFolder_1_ghi_100_200.getTitle(), "ghi");
+		assertEquals(this.clickableFolder_abc.getTitle(), "abc");
 	}// testGetName
 
 	/**
@@ -107,10 +107,13 @@ public class ClickableFolderTest {
 	@Test
 	public final void testGetNumber() {
 		assertEquals(this.clickableFolder_023_jkl.getNumber(), 23);
+		assertTrue(this.clickableFolder_023_jkl.hasNumber());
 		assertEquals(this.clickableFolder_1_def.getNumber(), 1);
+		assertTrue(this.clickableFolder_1_def.hasNumber());
 		assertEquals(this.clickableFolder_1_ghi_100_200.getNumber(), 1);
-		assertEquals(this.clickableFolder_abc.getNumber(),
-				ClickableFolder.UNDEFINED_NUMBER);
+		assertTrue(this.clickableFolder_1_ghi_100_200.hasNumber());
+		assertEquals(this.clickableFolder_abc.getNumber(), -1);
+		assertFalse(this.clickableFolder_abc.hasNumber());
 	}// testGetNumber
 
 	/**
@@ -118,29 +121,20 @@ public class ClickableFolderTest {
 	 * {@link com.gmail.takashi316.lib.filesystem.ClickableFolder#getX()}.
 	 */
 	@Test
-	public final void testGetX() {
-		assertEquals(this.clickableFolder_023_jkl.getX(),
-				ClickableFolder.UNDEFINED_COORDINATE_VALUE);
-		assertEquals(this.clickableFolder_1_def.getX(),
-				ClickableFolder.UNDEFINED_COORDINATE_VALUE);
+	public final void testPoint() {
+		assertEquals(this.clickableFolder_023_jkl.getX(), -1);
+		assertEquals(this.clickableFolder_023_jkl.getY(), -1);
+		assertFalse(this.clickableFolder_023_jkl.hasPoint());
+		assertEquals(this.clickableFolder_1_def.getX(), -1);
+		assertEquals(this.clickableFolder_1_def.getY(), -1);
+		assertFalse(this.clickableFolder_1_def.hasPoint());
 		assertEquals(this.clickableFolder_1_ghi_100_200.getX(), 100);
-		assertEquals(this.clickableFolder_abc.getX(),
-				ClickableFolder.UNDEFINED_COORDINATE_VALUE);
-	}// testGetX
-
-	/**
-	 * Test method for
-	 * {@link com.gmail.takashi316.lib.filesystem.ClickableFolder#getY()}.
-	 */
-	@Test
-	public final void testGetY() {
-		assertEquals(this.clickableFolder_023_jkl.getY(),
-				ClickableFolder.UNDEFINED_COORDINATE_VALUE);
-		assertEquals(this.clickableFolder_1_def.getY(),
-				ClickableFolder.UNDEFINED_COORDINATE_VALUE);
 		assertEquals(this.clickableFolder_1_ghi_100_200.getY(), 200);
-		assertEquals(this.clickableFolder_abc.getY(),
-				ClickableFolder.UNDEFINED_COORDINATE_VALUE);
-	}// testGetY
+		assertTrue(this.clickableFolder_1_ghi_100_200.hasPoint());
+		assertEquals(this.clickableFolder_abc.getX(), -1);
+		assertEquals(this.clickableFolder_abc.getY(), -1);
+		assertFalse(this.clickableFolder_abc.hasPoint());
+
+	}// testPoint
 
 }// ClickableFolderTest

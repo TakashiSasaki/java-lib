@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class ClickableFolder extends File {
-	public static final int UNDEFINED_NUMBER = -1;
-	public static final int UNDEFINED_COORDINATE_VALUE = -1;
+	private static final int UNDEFINED_NUMBER = -1;
+	private static final int UNDEFINED_COORDINATE_VALUE = -1;
 	private int[] idSequence;
 	private String rawName;
-	private String name;
+	private String title;
 	private int number = UNDEFINED_NUMBER;
 	private int x = UNDEFINED_COORDINATE_VALUE;
 	private int y = UNDEFINED_COORDINATE_VALUE;
@@ -29,15 +29,15 @@ public class ClickableFolder extends File {
 	private void parseRawName() {
 		String[] parts = this.rawName.split("[ ]+");
 		if (parts.length == 1) {
-			this.name = parts[0];
+			this.title = parts[0];
 		}// if
 		if (parts.length == 2) {
 			this.number = Integer.parseInt(parts[0]);
-			this.name = parts[1];
+			this.title = parts[1];
 		}// if
 		if (parts.length == 4) {
 			this.number = Integer.parseInt(parts[0]);
-			this.name = parts[1];
+			this.title = parts[1];
 			this.x = Integer.parseInt(parts[2]);
 			this.y = Integer.parseInt(parts[3]);
 		}// if
@@ -45,7 +45,7 @@ public class ClickableFolder extends File {
 
 	public HashMap<String, Object> get() throws IOException {
 		HashMap<String, Object> hash_map = new HashMap<String, Object>();
-		hash_map.put("name", this.name);
+		hash_map.put("name", this.title);
 		hash_map.put("number", this.number);
 		hash_map.put("rawName", this.rawName);
 		hash_map.put("x", this.x);
@@ -56,9 +56,8 @@ public class ClickableFolder extends File {
 		return hash_map;
 	}// get
 
-	@SuppressWarnings("javadoc")
-	public String getName() {
-		return this.name;
+	public String getTitle() {
+		return this.title;
 	}// getName
 
 	@SuppressWarnings("javadoc")
@@ -75,4 +74,15 @@ public class ClickableFolder extends File {
 	public int getY() {
 		return this.y;
 	}// getY
+
+	@SuppressWarnings("javadoc")
+	public boolean hasNumber() {
+		return (this.number == UNDEFINED_NUMBER) ? false : true;
+	}// hasNumber
+
+	@SuppressWarnings("javadoc")
+	public boolean hasPoint() {
+		return (this.x == UNDEFINED_COORDINATE_VALUE || this.y == UNDEFINED_COORDINATE_VALUE) ? false
+				: true;
+	}// hasPoint
 }// ClickableFolder
