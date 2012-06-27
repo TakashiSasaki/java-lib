@@ -4,17 +4,18 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class ClickableFolder {
-	public static final int ID_UNDEFINED = 0;
-	public static final int ID_NULL = -1;
+public class ClickableFolder extends File {
+	public static final int UNDEFINED_NUMBER = -1;
+	public static final int UNDEFINED_COORDINATE_VALUE = -1;
 	private int[] idSequence;
 	private String rawName;
 	private String name;
-	private int number = ID_UNDEFINED;
-	private int x = -1;
-	private int y = -1;
+	private int number = UNDEFINED_NUMBER;
+	private int x = UNDEFINED_COORDINATE_VALUE;
+	private int y = UNDEFINED_COORDINATE_VALUE;
 
 	public ClickableFolder(File directory_path, int[] parent_sequence) {
+		super(directory_path.toString());
 		this.rawName = directory_path.getName();
 		String[] parts = this.rawName.split("[ ]+");
 		if (parts.length == 1) {
