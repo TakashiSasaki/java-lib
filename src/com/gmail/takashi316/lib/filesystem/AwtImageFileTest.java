@@ -5,7 +5,9 @@ package com.gmail.takashi316.lib.filesystem;
 
 import static org.junit.Assert.*;
 
+import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,7 +21,7 @@ import org.junit.Test;
  */
 public class AwtImageFileTest {
 	final Directory currentDirectory = new Directory();
-	ImageFile imageFile;
+	AwtImageFile imageFile;
 
 	/**
 	 * @throws java.lang.Exception
@@ -62,5 +64,23 @@ public class AwtImageFileTest {
 		assertEquals(this.imageFile.height, 512);
 		assertEquals(this.imageFile.width, 512);
 	}// testAwtImageFile
+
+	@SuppressWarnings("javadoc")
+	@Test
+	public final void testGetImage() throws IOException {
+		Image image = this.imageFile.getImage();
+		assertEquals(512, image.getHeight(null));
+		assertEquals(512, image.getWidth(null));
+	}// testGetImage
+
+	@SuppressWarnings("javadoc")
+	@Test
+	public final void testGetResizedImage() throws IOException {
+		final int WIDTH = 123;
+		final int HEIGHT = 456;
+		Image image = this.imageFile.getResizedImage(WIDTH, HEIGHT);
+		assertEquals(WIDTH, image.getWidth(null));
+		assertEquals(HEIGHT, image.getHeight(null));
+	}// testGetResizedImage
 
 }// AwtImageFileTest
