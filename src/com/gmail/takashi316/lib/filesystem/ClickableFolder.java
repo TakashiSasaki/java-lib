@@ -23,7 +23,7 @@ public class ClickableFolder extends File {
 			this.idSequence[i] = parent_sequence[i];
 		}// for
 		this.idSequence[parent_sequence.length] = number;
-		
+
 	}// the constructor
 
 	private void parseRawName() {

@@ -5,8 +5,17 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * An implementation of ImageFile using AWT. Note that AWT does not supported in
+ * standard Android platform.
+ * 
+ * @author Takashi SASAKI {@link "http://twitter.com/TakashiSasaki"}
+ * 
+ */
+@SuppressWarnings("serial")
 public class AwtImageFile extends ImageFile {
 
+	@SuppressWarnings("javadoc")
 	public AwtImageFile(String pathname) throws IOException {
 		super(pathname);
 	}// a constructor
