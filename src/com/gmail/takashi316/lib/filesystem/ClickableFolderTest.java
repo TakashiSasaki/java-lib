@@ -30,7 +30,7 @@ public class ClickableFolderTest {
 	public static void tearDownAfterClass() throws Exception {
 	}// tearDownAfterClass
 
-	private File currentDirectory;
+	private Directory currentDirectory;
 	private ClickableFolder clickableFolder_023_jkl;
 	private ClickableFolder clickableFolder_1_def;
 	private ClickableFolder clickableFolder_1_ghi_100_200;
@@ -42,7 +42,7 @@ public class ClickableFolderTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		this.currentDirectory = Directory.getCurrentDirectory();
+		this.currentDirectory = new Directory();
 		this.readOnlyDirectory = new File(this.currentDirectory, "readonly");
 		this.clickableFolder_023_jkl = new ClickableFolder(new File(
 				this.readOnlyDirectory, "023 jkl"), new int[] {});

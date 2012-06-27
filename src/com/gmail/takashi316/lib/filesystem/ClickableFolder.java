@@ -17,6 +17,16 @@ public class ClickableFolder extends File {
 	public ClickableFolder(File directory_path, int[] parent_sequence) {
 		super(directory_path.toString());
 		this.rawName = directory_path.getName();
+		parseRawName();
+		this.idSequence = new int[parent_sequence.length + 1];
+		for (int i = 0; i < parent_sequence.length; ++i) {
+			this.idSequence[i] = parent_sequence[i];
+		}// for
+		this.idSequence[parent_sequence.length] = number;
+		
+	}// the constructor
+
+	private void parseRawName() {
 		String[] parts = this.rawName.split("[ ]+");
 		if (parts.length == 1) {
 			this.name = parts[0];
@@ -31,12 +41,7 @@ public class ClickableFolder extends File {
 			this.x = Integer.parseInt(parts[2]);
 			this.y = Integer.parseInt(parts[3]);
 		}// if
-		this.idSequence = new int[parent_sequence.length + 1];
-		for (int i = 0; i < parent_sequence.length; ++i) {
-			this.idSequence[i] = parent_sequence[i];
-		}
-		this.idSequence[parent_sequence.length] = number;
-	}// the constructor
+	}// parseDirectoryName
 
 	public HashMap<String, Object> get() throws IOException {
 		HashMap<String, Object> hash_map = new HashMap<String, Object>();
