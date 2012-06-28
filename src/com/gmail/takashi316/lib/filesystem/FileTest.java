@@ -16,7 +16,8 @@ public class FileTest extends TestCase {
 	@Override
 	protected void setUp() throws Exception {
 		this.currentDirectory = new Directory();
-		this.writeableDirectory = new Directory(this.currentDirectory,
+		this.writeableDirectory = new Directory(
+				this.currentDirectory.getAbsoluteFile(),
 				FileTest.WRITEABLE_DIRECTORY_NAME);
 		if (!writeableDirectory.exists()) {
 			this.writeableDirectory.mkdir();
