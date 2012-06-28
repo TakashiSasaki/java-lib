@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author Takashi SASAKI <a href="http://twitter.com/TakashiSasaki"/>
+ * 
+ */
 public class Directory extends File {
 
 	final private Pattern movieFilePattern = Pattern.compile("^.+\\.m4v$");
@@ -14,13 +18,20 @@ public class Directory extends File {
 	final private Pattern imageFilePattern = Pattern
 			.compile("^(.+\\.jpg)|(.+\\.jpeg)|(.+\\.png)$");
 
+	@SuppressWarnings("javadoc")
 	public Directory() {
 		super((new File(".")).getAbsoluteFile().getParent());
 	}// default constructor
 
+	@SuppressWarnings("javadoc")
+	public Directory(File parent) {
+		super(parent.getAbsolutePath());
+	}// a constructor taking File object
+
+	@SuppressWarnings("javadoc")
 	public Directory(File parent, String child) {
 		super(parent, child);
-	}// a constructor
+	}// a constructor taking parent and child
 
 	public ArrayList<File> listMatchedFiles(Pattern pattern) {
 		ArrayList<File> files = new ArrayList<File>();
@@ -41,6 +52,7 @@ public class Directory extends File {
 		}// for
 	}// emptyFiles
 
+	@SuppressWarnings("javadoc")
 	public int countFiles() {
 		int count = 0;
 		for (File f : this.listFiles()) {
@@ -50,6 +62,11 @@ public class Directory extends File {
 		}// for
 		return count;
 	}// countFiles
+
+	@SuppressWarnings("javadoc")
+	public Directory getChild(String child) {
+		return new Directory(this, child);
+	}
 
 	@SuppressWarnings("javadoc")
 	public ArrayList<File> listImages() {
@@ -70,5 +87,6 @@ public class Directory extends File {
 	public ArrayList<File> listTextFiles() {
 		return listMatchedFiles(this.textFilePattern);
 	}
+
 }// Directory
 
