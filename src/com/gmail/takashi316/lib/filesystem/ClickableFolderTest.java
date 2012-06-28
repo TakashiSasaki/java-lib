@@ -134,7 +134,6 @@ public class ClickableFolderTest {
 		assertEquals(this.clickableFolder_abc.getX(), -1);
 		assertEquals(this.clickableFolder_abc.getY(), -1);
 		assertFalse(this.clickableFolder_abc.hasPoint());
-
 	}// testPoint
 
 }// ClickableFolderTest
