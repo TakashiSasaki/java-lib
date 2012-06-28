@@ -4,13 +4,15 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import junit.framework.TestCase;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class GsonTest {
+public class GsonTest extends TestCase {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -41,7 +43,8 @@ public class GsonTest {
 		assertEquals(json_deserializer.getClassT1(), int[].class);
 		assertEquals(json_deserializer.getClassT2().getCanonicalName(), "int[]");
 		assertEquals(json_deserializer.getClassT2(), int[].class);
-		assertEquals(json_deserializer.getClassT1(), json_deserializer.getClassT2());
+		assertEquals(json_deserializer.getClassT1(),
+				json_deserializer.getClassT2());
 		int[] deserialized_data = json_deserializer.get();
 
 		for (int i = 0; i < data.length; ++i) {
