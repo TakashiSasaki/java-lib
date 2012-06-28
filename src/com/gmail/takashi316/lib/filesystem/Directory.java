@@ -18,6 +18,10 @@ public class Directory extends File {
 		super((new File(".")).getAbsoluteFile().getParent());
 	}// default constructor
 
+	public Directory(File parent, String child) {
+		super(parent, child);
+	}// a constructor
+
 	public ArrayList<File> listMatchedFiles(Pattern pattern) {
 		ArrayList<File> files = new ArrayList<File>();
 		for (File f : this.listFiles()) {
@@ -27,10 +31,44 @@ public class Directory extends File {
 			}// if
 		}// for
 		return files;
-	}
+	}// listMatchedFiles
 
+	public void emptyFiles() {
+		for (File f : this.listFiles()) {
+			if (f.exists() && f.isFile()) {
+				f.delete();
+			}// if
+		}// for
+	}// emptyFiles
+
+	public int countFiles() {
+		int count = 0;
+		for (File f : this.listFiles()) {
+			if (f.exists() && f.isFile()) {
+				count++;
+			}// if
+		}// for
+		return count;
+	}// countFiles
+
+	@SuppressWarnings("javadoc")
 	public ArrayList<File> listImages() {
 		return listMatchedFiles(this.imageFilePattern);
+	}// listImages
+
+	@SuppressWarnings("javadoc")
+	public ArrayList<File> listMovies() {
+		return listMatchedFiles(this.movieFilePattern);
+	}
+
+	@SuppressWarnings("javadoc")
+	public ArrayList<File> listHtmlFiles() {
+		return listMatchedFiles(this.htmlFilePattern);
+	}
+
+	@SuppressWarnings("javadoc")
+	public ArrayList<File> listTextFiles() {
+		return listMatchedFiles(this.textFilePattern);
 	}
 }// Directory
 
