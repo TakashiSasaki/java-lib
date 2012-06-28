@@ -1,17 +1,26 @@
 package com.gmail.takashi316.lib.string;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class StringArray extends ArrayList<String> {
 	String[] strings;
 
 	public StringArray(ArrayList<String> array_list_string) {
-		this.strings = (String[]) array_list_string.toArray();
+		this.strings = array_list_string.toArray(new String[] {});
 	}
 
 	public StringArray(String[] strings_) {
 		this.strings = strings_;
 	}
+
+	public StringArray(Map<String, String> string_pairs, String separator) {
+		ArrayList<String> als = new ArrayList<String>();
+		for (String key : string_pairs.keySet()) {
+			als.add(key + separator + string_pairs.get(key));
+		}// for
+		this.strings = als.toArray(new String[] {});
+	}// a constructor
 
 	public String concat(String separater) {
 		StringBuilder sb = new StringBuilder();
