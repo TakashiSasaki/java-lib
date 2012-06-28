@@ -39,6 +39,12 @@ public abstract class ImageFile<T> extends File {
 	}// a constructor
 
 	@SuppressWarnings("javadoc")
+	public ImageFile(File parent, String child) throws IOException {
+		super(parent, child);
+		getSize();
+	}// a constructor
+
+	@SuppressWarnings("javadoc")
 	public int getWidth() {
 		return this.width;
 	}// getWidth
