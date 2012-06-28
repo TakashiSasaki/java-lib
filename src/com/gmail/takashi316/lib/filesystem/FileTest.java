@@ -3,8 +3,6 @@ package com.gmail.takashi316.lib.filesystem;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 
-import org.junit.Test;
-
 import junit.framework.TestCase;
 
 public class FileTest extends TestCase {
@@ -19,18 +17,19 @@ public class FileTest extends TestCase {
 	protected void setUp() throws Exception {
 		this.currentDirectory = new Directory();
 		this.writeableDirectory = new Directory(this.currentDirectory,
-				this.WRITEABLE_DIRECTORY_NAME);
+				FileTest.WRITEABLE_DIRECTORY_NAME);
 		if (!writeableDirectory.exists()) {
 			this.writeableDirectory.mkdir();
 		}
 		this.readOnlyDirectory = new Directory(this.currentDirectory,
-				this.READONLY_DIRECTORY_NAME);
+				FileTest.READONLY_DIRECTORY_NAME);
 		assertTrue(this.writeableDirectory.exists());
 		this.writeableDirectory.emptyFiles();
 		assertEquals(0, this.writeableDirectory.countFiles());
 		super.setUp();
 	}// setUp
 
+	@SuppressWarnings("javadoc")
 	public final void testCopyFile() throws IOException {
 		File lena = new File(this.readOnlyDirectory, "1 ghi 100 200/lena.bmp");
 		assertTrue(lena.isFile());
