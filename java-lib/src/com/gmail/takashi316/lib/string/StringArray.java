@@ -1,7 +1,7 @@
 package com.gmail.takashi316.lib.string;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
 
 public class StringArray extends ArrayList<String> {
 	String[] strings;
