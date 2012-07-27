@@ -2,6 +2,7 @@ package com.gmail.takashi316.lib.string;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class StringArray extends ArrayList<String> {
 	String[] strings;
