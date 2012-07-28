@@ -5,11 +5,11 @@ import java.util.HashMap;
 import junit.framework.TestCase;
 
 public class StringArrayTest extends TestCase {
-	StringArray stringArray0;
-	StringArray stringArray1;
-	StringArray stringArray2;
-	StringArray stringArray3;
-	StringArray stringArray4;
+	private StringArray stringArray0;
+	private StringArray stringArray1;
+	private StringArray stringArray2;
+	private StringArray stringArray3;
+	private StringArray stringArray4;
 
 	@Override
 	protected void setUp() throws Exception {
@@ -34,7 +34,9 @@ public class StringArrayTest extends TestCase {
 		assertEquals("defg", this.stringArray2.concat(""));
 		assertEquals("hij", this.stringArray3.concat(""));
 		assertEquals("h^i^j", this.stringArray3.concat("^"));
-		assertEquals("alpha+beta-takashi+sasaki", this.stringArray4.concat("-"));
-	}
+		String concat4 = this.stringArray4.concat("-");
+		assertTrue("takashi+sasaki-alpha+beta".compareTo(concat4) == 0
+				|| "alpha+beta-takashi+sasaki".compareTo(concat4) == 0);
+	}// testConcat
 
 }
