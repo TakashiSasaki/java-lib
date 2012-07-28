@@ -1,7 +1,10 @@
 package com.gmail.takashi316.lib.string;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.HashMap;
+=======
+>>>>>>> FETCH_HEAD
 import java.util.Map;
 
 public class StringArray extends ArrayList<String> {

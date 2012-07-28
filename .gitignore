@@ -9,6 +9,10 @@ tmp/
 *.bak
 *.swp
 *~.nib
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
 
 # External tool builders
 .externalToolBuilders/

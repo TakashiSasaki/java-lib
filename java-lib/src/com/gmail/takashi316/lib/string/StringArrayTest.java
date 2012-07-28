@@ -18,7 +18,11 @@ public class StringArrayTest extends TestCase {
 		this.stringArray2 = new StringArray(new String[] { "de", "fg" });
 		this.stringArray3 = new StringArray(new String[] { "h", "i", "j" });
 
+<<<<<<< HEAD
 		HashMap<String, String> hm = new HashMap<String, String>();
+=======
+		HashMap<String, String> hm = new HashMap();
+>>>>>>> FETCH_HEAD
 		hm.put("takashi", "sasaki");
 		hm.put("alpha", "beta");
 		this.stringArray4 = new StringArray(hm, "+");
